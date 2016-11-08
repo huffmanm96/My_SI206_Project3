@@ -8,24 +8,17 @@ import nltk
 import random
 from nltk import word_tokenize,sent_tokenize
 
-print(text1)
-print(text2)
-
+print("START*******")
 print("\n\n")
 
-tokens = nltk.word_tokenize(text2)
-print("TOKENS")
-print(tokens)
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("TAGGED TOKENS")
-print(tagged_tokens)
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:5]:
-		print (tup)
+tokens = text2[:150]
 
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective"}
-substitution_probabilities = {"NN":.1,"NNS":.2,"VB":.25,"JJ":.25}
+
+tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+
+
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "ADV":"an adverb"}
+substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"ADV":.1}
 
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
@@ -43,7 +36,14 @@ for (word, tag) in tagged_tokens:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
-print ("".join(final_words))
+print("\n\n")
+
+old_text = " ".join(tokens)
+new_text = "".join(final_words)
+
+print ("Original text:" + str(old_text))
+print("\n\n")
+print ("New text:" + new_text)
 
 
 # Requirements:
@@ -54,7 +54,6 @@ print ("".join(final_words))
 # Deliverables:
 # 1) Print the orginal text (150 tokens)
 # 1) Print the new text
-print("START*******")
 
 
 print("\n\nEND*******")
