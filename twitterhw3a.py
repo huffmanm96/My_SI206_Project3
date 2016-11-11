@@ -6,14 +6,18 @@
 import tweepy
 import tokens
 
+print ("Name: Madison Huffman")
+print ("UM ID: 34109303")
+print("\n")
+
 # Boilerplate code here
 auth = tweepy.OAuthHandler(tokens.consumer_key,tokens.consumer_secret)
 auth.set_access_token(tokens.access_token,tokens.access_token_secret)
 
 api = tweepy.API(auth)
-#Now we can Create Tweets, Delete Tweets, and Find Twitter Users
+#Now we can Create Tweet
 try:
-    api.update_with_media('umsi_internal_yellow_M2.jpg',"#UMSI206 #Proj3")
+    api.update_with_media('umsi_internal_yellow_M2.jpg',"#UMSI-206 #Proj3")
     print ("Success!")
 except:
     print ("Fail... womp.")

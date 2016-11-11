@@ -1,25 +1,27 @@
 # Using text2 from the nltk book corpa, create your own version of the
 # MadLib program.  
-
-# making a new commit 5
 from nltk.book import *
 from nltk import bigrams
 import nltk
 import random
 from nltk import word_tokenize,sent_tokenize
 
+print ("Name: Madison Huffman")
+print ("UM ID: 34109303")
+print("\n")
 print("START*******")
 print("\n\n")
 
+# First 150 tokens of text2
 tokens = text2[:150]
-
 
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
 
-
+# Set tags and probabilities
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "ADV":"an adverb"}
 substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"ADV":.1}
 
+# Write function for clarity
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
 		return word
@@ -28,7 +30,7 @@ def spaced(word):
 
 final_words = []
 
-
+# Replace the words in the text
 for (word, tag) in tagged_tokens:
 	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
 		final_words.append(spaced(word))
