@@ -10,3 +10,32 @@
 
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
+import re
+import requests
+from bs4 import BeautifulSoup
+
+
+# Making request with Beautiful Soup
+base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
+r = requests.get(base_url)
+umsi_soup = BeautifulSoup(r.text, "html.parser")
+
+
+
+
+f = open('bshw3.html','w')
+html_txt = umsi_soup.prettify()
+
+amazing_txt = html_txt.replace("student", "AMAZING student")
+capital_txt = amazing_txt.replace("Student", "AMAZING Student")
+
+add_logos = capital_txt.replace("logo2.png", "https://github.com/cvanlent/SI206/blob/master/HW3-StudentCopy/media/logo.png?raw=true")
+
+add_mypic = add_logos.replace("https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg", "https://www.dropbox.com/s/o9a2xhjpav1h3tq/IMG_7088.jpg?dl=1")
+
+f.write(add_mypic)
+f.close()
+
+
+
+
